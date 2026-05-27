@@ -189,70 +189,6 @@ app.get("/invoice/:invoiceId/:orgId", async (req, res) => {
     }
 });
 
-// app.get("/invoice/:invoiceId/:orgId", async (req, res) => {
-//     try {
-
-//         const { invoiceId, orgId } = req.params;
-//         console.log("==================================");
-//         console.log("INVOICE REQUEST");
-//         console.log("Invoice ID:", invoiceId);
-//         console.log("Org ID:", orgId);
-
-//         if (!invoiceId || !orgId) {
-//             return res.status(400).json({
-//                 success: false,
-//                 message: "Missing invoiceId or orgId"
-//             });
-//         }
-
-//         // STEP 1: GET ACCESS TOKEN
-//         const token = await getAccessToken();
-
-//         // STEP 2: CALL ZOHO API
-//         const url = `${API_URL}/books/v3/invoices/${invoiceId}`;
-
-//         const response = await axios.get(url, {
-//             headers: {
-//                 Authorization: `Zoho-oauthtoken ${token}`
-//             },
-//             params: {
-//                 organization_id: orgId
-//             }
-//         });
-
-//         console.log("✔ INVOICE FETCH SUCCESS");
-
-//         // return res.json(response.data);
-//         const invoiceData = response.data.invoice;
-
-// // DEBUG
-
-// console.log("IRN:", invoiceData.irn);
-// console.log("QR:", invoiceData.qr_code_url);
-
-// return res.json(invoiceData);
-
-//     } catch (error) {
-
-//         console.log("❌ INVOICE FETCH FAILED");
-
-//         const zohoError = error.response?.data || error.message;
-
-//         console.log("FULL ERROR:");
-//         console.log(JSON.stringify(zohoError, null, 2));
-
-//         return res.status(500).json({
-//             success: false,
-//             message: "Invoice Fetch Failed",
-//             zoho_error: zohoError
-//         });
-//     }
-// });
-
-
-// ==========================================
-// GLOBAL ERROR HANDLER (ADDED)
-// ==========================================
 
 app.use((err, req, res, next) => {
     console.error("🔥 SERVER ERROR:", err.message);
@@ -275,7 +211,5 @@ app.listen(PORT, "0.0.0.0", () => {
     console.log("\n==================================");
     console.log("🚀 SERVER RUNNING SUCCESSFULLY");
     console.log("==================================");
-    console.log(`🌐 Local:   http://localhost:${PORT}`);
-    console.log(`📡 Network: http://192.168.1.47:${PORT}`);
     console.log("==================================\n");
 });
