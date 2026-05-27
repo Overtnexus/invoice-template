@@ -94,7 +94,7 @@ async function loadInvoice() {
         // ==================================
 
         const apiUrl =
-            `http://127.0.0.1:3000/invoice/${invoiceId}/${orgId}`;
+            fetch(`/invoice/${invoiceId}/${orgId}`);
 
         console.log(apiUrl);
 
