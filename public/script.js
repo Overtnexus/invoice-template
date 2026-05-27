@@ -93,24 +93,25 @@ async function loadInvoice() {
         // API URL
         // ==================================
 
-        const apiUrl =
-           `/invoice/${invoiceId}/${orgId}`;
+      const apiUrl =
+    `/invoice/${invoiceId}/${orgId}`;
 
-        console.log(apiUrl);
+console.log("API URL:", apiUrl);
 
-        // ==================================
-        // FETCH
-        // ==================================
+const response =
+    await fetch(apiUrl);
 
-        const response =
-            await fetch(apiUrl);
+if (!response.ok) {
 
-        if (!response.ok) {
+    const errorText =
+        await response.text();
 
-            throw new Error(
-                "Invoice API Failed"
-            );
-        }
+    console.log(errorText);
+
+    throw new Error(
+        "Invoice API Failed"
+    );
+}
 
         const invoice =
             await response.json();
