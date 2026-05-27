@@ -94,7 +94,7 @@ async function loadInvoice() {
         // ==================================
 
         const apiUrl =
-            fetch(`/invoice/${invoiceId}/${orgId}`);
+           `/invoice/${invoiceId}/${orgId}`;
 
         console.log(apiUrl);
 
