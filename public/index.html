@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tax Invoice - Pomees Fashions</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="invoice-container">
+
+        <!-- PRINT BUTTON -->
+
+        <div class="print-bar">
+
+            <button onclick="printInvoice()" class="print-btn">
+                Print Invoice
+            </button>
+
+        </div>
+
+        <!-- Header -->
+
+        <div class="header-section">
+
+           <img src="Pomees_logo.png" class="logo-image" alt="Logo">
+
+            <div class="company-details">
+
+                <h1>POMEES FASHIONS PRIVATE LIMITED</h1>
+
+                <p>CALICUT ROAD, MANJERI, MALAPPURAM</p>
+
+                <p>Kerala, India - 676121</p>
+
+                <p>
+                    Phone: 8593051051
+                </p>
+
+                <p>
+                    Email: pomeesindia@gmail.com
+                </p>
+
+                <p class="gstin">
+                    GSTIN : 32AALCP3675Q1ZP
+                </p>
+
+                <p class="rule">
+                    Rule 46 of the Central Goods and Services Tax Rules, 2017
+                </p>
+
+            </div>
+
+            <div class="invoice-meta">
+
+                <table>
+
+                    <tr>
+                        <td>Reverse Charge</td>
+                        <td>: No</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Invoice No</strong></td>
+                        <td>:
+                            <strong id="invoice_number"></strong>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Date</td>
+                        <td>:
+                            <span id="invoice_date"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Place of Supply</td>
+                        <td>:
+                            <span id="place_of_supply"></span>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <!-- TITLE -->
+
+        <div class="tax-invoice-title">
+
+            TAX INVOICE
+
+        </div>
+
+        <!-- ADDRESS -->
+
+        <div class="address-section">
+
+            <!-- BILL TO -->
+
+            <div class="bill-to">
+
+                <strong>Bill To :</strong>
+
+                <p>
+                    <strong id="bill_name"></strong>
+                </p>
+
+                <p id="bill_address"></p>
+
+                <p>
+                    <span id="bill_city"></span>,
+                    <span id="bill_state"></span>
+                    -
+                    <span id="bill_zip"></span>
+                </p>
+
+                <p>
+                    State :
+                    <span id="bill_state2"></span>
+                </p>
+
+                <p>
+                    GSTIN :
+                    <span id="bill_gstin"></span>
+                </p>
+
+            </div>
+
+            <!-- SHIP TO -->
+
+            <div class="ship-to">
+
+                <strong>Ship To :</strong>
+
+                <p>
+                    <strong id="ship_name"></strong>
+                </p>
+
+                <p id="ship_address"></p>
+
+                <p>
+                    <span id="ship_city"></span>,
+                    <span id="ship_state"></span>
+                    -
+                    <span id="ship_zip"></span>
+                </p>
+
+                <p>
+                    GSTIN :
+                    <span id="ship_gstin"></span>
+                </p>
+
+            </div>
+
+            <!-- META -->
+
+            <div class="supply-meta">
+
+                <table>
+
+                    <tr>
+                        <td>Date of Supply</td>
+                        <td>:
+                            <span id="supply_date"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Customer PO</td>
+                        <td>:
+                            <span id="customer_po"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Delivery To</strong></td>
+                        <td>:
+                            <span id="delivery_to"></span>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <!-- ITEMS TABLE -->
+
+        <table class="items-table">
+            
+
+            <thead>
+
+                <tr>
+
+                    <th rowspan="2">No.</th>
+
+                    <th rowspan="2">Item Description</th>
+
+                    <th rowspan="2">HSN Code</th>
+
+                    <th rowspan="2">MRP</th>
+
+                    <th colspan="7">Size</th>
+
+                    <th rowspan="2">Total</th>
+
+                    <th rowspan="2">Tax %</th>
+
+                    <th rowspan="2">Rate</th>
+
+                    <th rowspan="2">Amount</th>
+
+                </tr>
+
+                <tr>
+
+                    <th>XS</th>
+
+                    <th>S</th>
+
+                    <th>M</th>
+
+                    <th>L</th>
+
+                    <th>XL</th>
+
+                    <th>XXL</th>
+
+                    <th>OTHERS</th>
+
+                </tr>
+
+            </thead>
+
+            <!-- DYNAMIC BODY -->
+
+            <tbody id="items_body">
+
+            </tbody>
+
+            <tfoot>
+
+                <tr>
+
+                    <td colspan="11" class="text-right">
+
+                        Total
+
+                    </td>
+
+                    <td id="total_qty"></td>
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td id="total_amount"></td>
+
+                </tr>
+
+            </tfoot>
+
+        </table>
+
+        <!-- FOOTER -->
+
+        <div class="footer-summary">
+
+            <div class="bank-details">
+
+                <p>
+                    <strong>
+                        <u>Amount In Words</u>
+                    </strong>
+                </p>
+
+                <div class="amount-words" id="amount_words">
+
+                </div>
+
+            </div>
+
+            <div class="tax-summary">
+
+                <table>
+
+                    <tr>
+                        <td>Taxable Amt</td>
+                        <td class="text-right">
+                            <strong id="sub_total"></strong>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>SGST</td>
+                        <td class="text-right" id="sgst_total"></td>
+                    </tr>
+
+                    <tr>
+                        <td>CGST</td>
+                        <td class="text-right" id="cgst_total"></td>
+                    </tr>
+
+                    <tr class="border-top">
+
+                        <td>
+                            <strong>Total GST</strong>
+                        </td>
+
+                        <td class="text-right">
+                            <strong id="tax_total"></strong>
+                        </td>
+
+                    </tr>
+
+                    <tr class="border-top highlight">
+
+                        <td>
+                            <strong>Total</strong>
+                        </td>
+
+                        <td class="text-right">
+                            <strong id="grand_total"></strong>
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <!-- ===================================== -->
+<!-- E INVOICE -->
+<!-- ===================================== -->
+<!-- E INVOICE SECTION -->
+
+<div class="einvoice-section">
+
+    <div class="qr-box">
+
+        <img id="qrCode" src="" alt="QR CODE">
+
+    </div>
+
+    <div class="einvoice-details">
+
+        <p>
+            <strong>IRN :</strong>
+            <span id="irnNumber"></span>
+        </p>
+
+        <p>
+            <strong>Ack No :</strong>
+            <span id="ackNumber"></span>
+        </p>
+
+        <p>
+            <strong>Ack Date :</strong>
+            <span id="ackDate"></span>
+        </p>
+
+        <p class="govt-note">
+            e-Invoicing detail(s) generated from the Government's e-Invoicing system.
+        </p>
+
+    </div>
+
+</div>
+
+        <!-- SIGNATURE -->
+
+        <div class="signature-section">
+
+            <div class="salesman">
+
+                Sales Man :
+                <span id="salesman_name"></span>
+
+            </div>
+
+            <div class="seal">
+
+                Seal
+
+            </div>
+
+            <div class="auth-signatory">
+
+                <p>
+
+                    Certified that all the particulars given above are true and correct
+
+                </p>
+
+                <p>
+
+                    <strong>
+                        For POMEES FASHIONS PRIVATE LIMITED
+                    </strong>
+
+                </p>
+
+                <p class="sign-space">
+
+                    AUTHORISED SIGNATORY
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

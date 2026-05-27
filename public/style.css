@@ -1,0 +1,684 @@
+
+.copy-type {
+
+    text-align: right;
+
+    font-size: 11px;
+
+    margin-bottom: 5px;
+
+    font-weight: bold;
+}
+
+
+/* ===================================== */
+/* TABLE */
+/* ===================================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.header-table td,
+.customer-table td,
+.items-table th,
+.items-table td,
+.footer-table td,
+.total-table td {
+
+    border: 1px solid #000;
+}
+
+
+/* ===================================== */
+/* HEADER */
+/* ===================================== */
+
+.logo-cell {
+
+    width: 130px;
+
+    text-align: center;
+
+    vertical-align: middle;
+
+    padding: 8px;
+}
+
+.logo {
+
+    width: 115px;
+
+    height: 115px;
+
+    object-fit: contain;
+}
+.logo-image {
+
+    width: 95px;
+
+    height: 95px;
+    margin-left: 15px;
+    object-fit: contain;
+}
+.company-cell {
+
+    text-align: center;
+
+    vertical-align: middle;
+
+    padding: 8px 12px;
+}
+
+.company-cell h1 {
+
+    font-size: 17px;
+
+    margin: 0 0 6px;
+
+    font-weight: bold;
+}
+
+.company-cell p {
+
+    margin: 3px 0;
+
+    font-size: 10px;
+
+    line-height: 15px;
+}
+
+.invoice-info-cell {
+
+    width: 240px;
+
+    vertical-align: top;
+}
+
+
+/* ===================================== */
+/* SMALL TABLE */
+/* ===================================== */
+
+.small-table td {
+
+    font-size: 10px;
+
+    padding: 5px 6px;
+
+    line-height: 14px;
+}
+
+
+/* ===================================== */
+/* TITLE */
+/* ===================================== */
+
+.invoice-title {
+
+    text-align: center;
+
+    border: 1px solid #000;
+
+    border-top: none;
+
+    font-weight: bold;
+
+    font-size: 15px;
+
+    padding: 7px;
+
+    letter-spacing: 1px;
+}
+
+
+/* ===================================== */
+/* CUSTOMER */
+/* ===================================== */
+
+.customer-table td {
+
+    vertical-align: top;
+
+    padding: 8px;
+
+    font-size: 10px;
+
+    line-height: 16px;
+}
+
+.customer-left {
+    width: 34%;
+}
+
+.customer-middle {
+    width: 34%;
+}
+
+.customer-right {
+    width: 32%;
+}
+
+.customer-table p {
+
+    margin: 3px 0;
+}
+
+
+/* ===================================== */
+/* ITEM TABLE */
+/* ===================================== */
+
+.items-table {
+
+    table-layout: fixed;
+}
+.items-table th:nth-child(1),
+.items-table td:nth-child(1) {
+    width: 20px !important;
+}
+
+.items-table th:nth-child(2),
+.items-table td:nth-child(2) {
+    width: 70px !important;
+    text-align: center;
+}
+
+.items-table th {
+
+    font-size: 10px;
+
+    padding: 7px 4px;
+
+    background: #efefef;
+
+    line-height: 14px;
+
+    font-weight: bold;
+}
+
+.items-table td {
+
+    font-size: 10px;
+
+    padding: 6px 4px;
+
+    height: 28px;
+
+    text-align: center;
+
+    vertical-align: middle;
+}
+
+.left-text {
+
+    text-align: left !important;
+
+    padding-left: 8px !important;
+
+    line-height: 14px;
+}
+
+/* ===================================== */
+/* E INVOICE */
+/* ===================================== */
+
+/* ===================================== */
+/* E INVOICE */
+/* ===================================== */
+
+.einvoice-section {
+
+    display: flex;
+
+    border: 1px solid #000;
+
+    border-top: none;
+
+    padding: 10px;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.qr-box {
+
+    width: 160px;
+
+    min-width: 160px;
+}
+
+.qr-box img {
+
+    width: 150px;
+
+    height: 150px;
+
+    object-fit: contain;
+
+    border: 1px solid #000;
+}
+
+.einvoice-details {
+
+    flex: 1;
+
+    font-size: 11px;
+
+    line-height: 20px;
+}
+
+.einvoice-details p {
+
+    margin: 5px 0;
+}
+
+.govt-note {
+
+    margin-top: 15px;
+
+    color: #666;
+
+    font-size: 10px;
+}
+
+.govt-note {
+
+    margin-top: 18px;
+
+    color: #666;
+
+    font-size: 10px;
+}
+
+
+/* ===================================== */
+/* FOOTER */
+/* ===================================== */
+
+.footer-table {
+
+    margin-top: -1px;
+}
+
+
+/* ===================================== */
+/* BANK */
+/* ===================================== */
+
+.bank-section {
+
+    width: 42%;
+
+    vertical-align: top;
+
+    padding: 8px;
+
+    font-size: 10px;
+
+    line-height: 15px;
+}
+
+.bank-section strong {
+
+    font-size: 11px;
+}
+
+.bank-section p {
+
+    margin: 4px 0;
+}
+
+
+/* ===================================== */
+/* SEAL */
+/* ===================================== */
+
+.seal-section {
+
+    width: 15%;
+
+    text-align: center;
+
+    vertical-align: middle;
+}
+
+.seal-box {
+
+    height: 160px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+/* ===================================== */
+/* TOTAL */
+/* ===================================== */
+
+.total-section {
+
+    width: 43%;
+
+    vertical-align: top;
+}
+
+.total-table td {
+
+    padding: 5px 6px;
+
+    font-size: 10px;
+
+    line-height: 15px;
+}
+
+.total-table td:last-child {
+
+    text-align: right;
+}
+
+.bold-row td {
+
+    font-weight: bold;
+}
+
+.grand-total td {
+
+    font-weight: bold;
+
+    font-size: 11px;
+
+    padding-top: 8px;
+
+    padding-bottom: 8px;
+}
+
+
+/* ===================================== */
+/* SIGN */
+/* ===================================== */
+
+.sign-area {
+
+    text-align: center;
+
+    font-size: 9px;
+
+    padding: 8px 6px;
+
+    line-height: 15px;
+}
+
+
+/* ===================================== */
+/* BOTTOM */
+/* ===================================== */
+
+.bottom-footer {
+
+    border: 1px solid #000;
+
+    border-top: none;
+
+    text-align: center;
+
+    font-size: 9px;
+
+    padding: 8px;
+
+    line-height: 14px;
+}
+
+.bottom-footer p {
+
+    margin: 3px 0;
+}
+
+
+/* ===================================== */
+/* SALESMAN */
+/* ===================================== */
+
+.salesman {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 25px;
+
+    font-size: 10px;
+}
+
+
+/* ===================================== */
+/* PRINT */
+/* ===================================== */
+
+@media print {
+
+    body {
+
+        background: white;
+
+        padding: 0;
+    }
+
+    .invoice-page {
+
+        width: 100%;
+
+        border: none;
+    }
+
+} */
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    margin: 0;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+.invoice-container {
+
+    width: 210mm;
+
+    min-height: 297mm;
+
+    margin: 0 auto;
+
+    background: white;
+
+    border: 1px solid #000;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+}
+
+.header-section {
+    display: flex;
+    border-bottom: 1px solid #000;
+}
+
+.logo-box {
+    width: 20%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #000;
+}
+
+.logo-circle {
+    width: 80px;
+    height: 80px;
+    background-color: #6a4a91;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.logo-text {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.company-details {
+    width: 50%;
+    padding: 5px;
+    text-align: center;
+    border-right: 1px solid #000;
+}
+
+.company-details h1 {
+    font-size: 14px;
+    margin: 2px 0;
+}
+
+.company-details p {
+    margin: 1px 0;
+}
+
+.gstin { font-weight: bold; margin-top: 5px; }
+.rule { font-size: 8px; margin-top: 5px; }
+
+.invoice-meta {
+    width: 30%;
+    padding: 5px;
+}
+
+.invoice-meta table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tax-invoice-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    border-bottom: 1px solid #000;
+    padding: 2px;
+    background: #f9f9f9;
+}
+
+.address-section {
+    display: flex;
+    border-bottom: 1px solid #000;
+}
+
+.bill-to, .ship-to {
+    width: 35%;
+    padding: 5px;
+    border-right: 1px solid #000;
+}
+
+.supply-meta {
+    width: 30%;
+    padding: 5px;
+}
+
+.supply-meta table { width: 100%; }
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-bottom: 1px solid #000;
+}
+
+.items-table th, .items-table td {
+    border: 1px solid #000;
+    padding: 3px;
+    text-align: center;
+}
+
+.items-table thead th {
+    background-color: #fff;
+    font-size: 9px;
+}
+
+.footer-summary {
+    display: flex;
+    border-bottom: 1px solid #000;
+}
+
+.bank-details {
+    width: 60%;
+    padding: 5px;
+    border-right: 1px solid #000;
+    position: relative;
+}
+
+.amount-words {
+    position: absolute;
+    bottom: 5px;
+    font-weight: bold;
+    font-size: 9px;
+}
+
+.tax-summary {
+    width: 40%;
+}
+
+.tax-summary table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tax-summary td {
+    padding: 3px 5px;
+    border-left: 1px solid #000;
+}
+
+.border-top { border-top: 1px solid #000; }
+.text-right { text-align: right; }
+.highlight { background-color: #eee; }
+
+.signature-section {
+    display: flex;
+    border-bottom: 1px solid #000;
+}
+
+.salesman, .seal {
+    width: 30%;
+    padding: 5px;
+    border-right: 1px solid #000;
+    min-height: 30px;   /* reduced */
+}
+
+.auth-signatory {
+    width: 40%;
+    padding: 5px;
+    text-align: center;
+}
+
+.sign-space { margin-top: 30px; font-weight: bold; }
+
+.page-footer {
+    text-align: center;
+    padding: 5px;
+    font-size: 9px;
+}
+
+.bottom-line {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    padding: 0 10px;
+}
