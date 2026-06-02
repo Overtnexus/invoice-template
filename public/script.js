@@ -322,25 +322,35 @@ if (!response.ok) {
                     item.quantity || 0
                 );
 
-                let size =
-                    "OTHERS";
+  let size = "OTHERS";
 
-                const sizeField =
-                    (
-                        item.item_custom_fields || []
-                    ).find(
-                        f =>
-                            f.label
-                                ?.toUpperCase() ===
-                            "SIZE"
-                    );
+const sizeField =
+(item.item_custom_fields || []).find(
+    f =>
+    f.label?.toUpperCase() === "SIZE"
+);
 
-                if (sizeField) {
+if (sizeField) {
 
-                    size =
-                        sizeField.value ||
-                        "OTHERS";
-                }
+    size =
+    (sizeField.value || "")
+    .toUpperCase()
+    .trim();
+}
+
+const validSizes = [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "XXL"
+];
+
+if (!validSizes.includes(size)) {
+
+    size = "OTHERS";
+}
 
                 rows += `
                     <tr>
