@@ -181,7 +181,7 @@ table {
 
 .items-table th:nth-child(2),
 .items-table td:nth-child(2) {
-    width: 70px !important;
+    width: 20px !important;
     text-align: center;
 }
 
