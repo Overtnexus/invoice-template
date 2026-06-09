@@ -265,164 +265,243 @@ if (!response.ok) {
             formatAmount(halfTax)
         );
 
-        // ==================================
-        // ITEMS
-        // ==================================
+// ==================================
+// ITEMS
+// ==================================
 
-        const sizeOrder = [
-            "XS",
-            "S",
-            "M",
-            "L",
-            "XL",
-            "XXL",
-            "OTHERS"
-        ];
-
-        let items =
-            invoice.line_items || [];
-
-        items.sort((a, b) => {
-
-            const getSize = (item) => {
-
-                const field =
-                    (item.item_custom_fields || [])
-                    .find(
-                        f =>
-                            f.label
-                                ?.toUpperCase() ===
-                            "SIZE"
-                    );
-
-                return (
-                    field?.value ||
-                    "OTHERS"
-                );
-            };
-
-            return (
-                sizeOrder.indexOf(
-                    getSize(a)
-                ) -
-                sizeOrder.indexOf(
-                    getSize(b)
-                )
-            );
-        });
-
-        let rows = "";
-
-        let totalQty = 0;
-
-        items.forEach(
-            (item, index) => {
-
-                totalQty += Number(
-                    item.quantity || 0
-                );
-
-  let size = "OTHERS";
-
-const sizeField =
-(item.item_custom_fields || []).find(
-    f =>
-    f.label?.toUpperCase() === "SIZE"
-);
-
-if (sizeField) {
-
-    size =
-    (sizeField.value || "")
-    .toUpperCase()
-    .trim();
-}
-
-const validSizes = [
+const sizeOrder = [
     "XS",
     "S",
     "M",
     "L",
     "XL",
-    "XXL"
+    "XXL",
+    "OTHERS"
 ];
 
-if (!validSizes.includes(size)) {
+let items = invoice.line_items || [];
 
-    size = "OTHERS";
-}
+// ==================================
+// SORT BY SIZE
+// ==================================
 
-                rows += `
-                    <tr>
+items.sort((a, b) => {
 
-                        <td>
-                            ${index + 1}
-                        </td>
+    const getSize = (item) => {
 
-                        <td class="left-text">
-                            ${item.name || ""}
-                        </td>
+        const field =
+            (item.item_custom_fields || [])
+            .find(
+                f =>
+                    f.label?.toUpperCase() ===
+                    "SIZE"
+            );
 
-                        <td>
-                            ${item.hsn_or_sac || ""}
-                        </td>
+        return (
+            field?.value ||
+            "OTHERS"
+        );
+    };
 
-                        <td>
-                            ${formatAmount(item.rate)}
-                        </td>
+    return (
+        sizeOrder.indexOf(getSize(a)) -
+        sizeOrder.indexOf(getSize(b))
+    );
+});
 
-                        <td>
-                            ${size === "XS" ? item.quantity : ""}
-                        </td>
+// ==================================
+// GROUP BY cf_group_name
+// ==================================
 
-                        <td>
-                            ${size === "S" ? item.quantity : ""}
-                        </td>
+const groupedItems = {};
 
-                        <td>
-                            ${size === "M" ? item.quantity : ""}
-                        </td>
+items.forEach(item => {
 
-                        <td>
-                            ${size === "L" ? item.quantity : ""}
-                        </td>
+    let groupName = "OTHERS";
 
-                        <td>
-                            ${size === "XL" ? item.quantity : ""}
-                        </td>
-
-                        <td>
-                            ${size === "XXL" ? item.quantity : ""}
-                        </td>
-
-                        <td>
-                            ${size === "OTHERS" ? item.quantity : ""}
-                        </td>
-
-                        <td>
-                            ${item.quantity || 0}
-                        </td>
-
-                        <td>
-                            ${item.tax_percentage || 0}%
-                        </td>
-
-                        <td>
-                            ${formatAmount(item.rate)}
-                        </td>
-
-                        <td>
-                            ${formatAmount(item.item_total)}
-                        </td>
-
-                    </tr>
-                `;
-            }
+    const groupField =
+        (item.item_custom_fields || [])
+        .find(
+            f =>
+                f.api_name ===
+                "cf_style_code"
         );
 
-        document.getElementById(
-            "items_body"
-        ).innerHTML = rows;
+    if (groupField) {
+
+        groupName =
+            groupField.value ||
+            "OTHERS";
+    }
+
+    if (!groupedItems[groupName]) {
+
+        groupedItems[groupName] = [];
+    }
+
+    groupedItems[groupName].push(item);
+
+});
+
+// ==================================
+// BUILD TABLE
+// ==================================
+
+let rows = "";
+
+let totalQty = 0;
+
+let rowIndex = 1;
+
+for (const groupName in groupedItems) {
+
+    const groupRows =
+        groupedItems[groupName];
+
+    groupRows.forEach(
+        (item, index) => {
+
+            totalQty +=
+                Number(
+                    item.quantity || 0
+                );
+
+            let size = "OTHERS";
+
+            const sizeField =
+                (
+                    item.item_custom_fields || []
+                )
+                .find(
+                    f =>
+                        f.label
+                            ?.toUpperCase() ===
+                        "SIZE"
+                );
+
+            if (sizeField) {
+
+                size =
+                    (
+                        sizeField.value || ""
+                    )
+                    .toUpperCase()
+                    .trim();
+            }
+
+            const validSizes = [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL"
+            ];
+
+            if (
+                !validSizes.includes(size)
+            ) {
+
+                size = "OTHERS";
+            }
+
+            rows += `
+            <tr>
+
+                ${
+                    index === 0
+                    ?
+                    `<td rowspan="${groupRows.length}"
+                        class="group-cell">
+                        ${groupName}
+                    </td>`
+                    :
+                    ""
+                }
+
+                <td>
+                    ${rowIndex++}
+                </td>
+
+                <td class="left-text">
+                    ${item.name || ""}
+                </td>
+
+                <td>
+                    ${item.hsn_or_sac || ""}
+                </td>
+
+                <td>
+                    ${formatAmount(item.rate)}
+                </td>
+
+                <td>
+                    ${size === "XS"
+                        ? item.quantity
+                        : ""}
+                </td>
+
+                <td>
+                    ${size === "S"
+                        ? item.quantity
+                        : ""}
+                </td>
+
+                <td>
+                    ${size === "M"
+                        ? item.quantity
+                        : ""}
+                </td>
+
+                <td>
+                    ${size === "L"
+                        ? item.quantity
+                        : ""}
+                </td>
+
+                <td>
+                    ${size === "XL"
+                        ? item.quantity
+                        : ""}
+                </td>
+
+                <td>
+                    ${size === "XXL"
+                        ? item.quantity
+                        : ""}
+                </td>
+
+                <td>
+                    ${size === "OTHERS"
+                        ? item.quantity
+                        : ""}
+                </td>
+
+                <td>
+                    ${item.quantity || 0}
+                </td>
+
+                <td>
+                    ${item.tax_percentage || 0}%
+                </td>
+
+                <td>
+                    ${formatAmount(item.rate)}
+                </td>
+
+                <td>
+                    ${formatAmount(item.item_total)}
+                </td>
+
+            </tr>
+            `;
+        }
+    );
+}
+
+document.getElementById(
+    "items_body"
+).innerHTML = rows;
 
         // ==================================
         // FINAL TOTAL

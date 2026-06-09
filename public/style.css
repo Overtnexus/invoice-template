@@ -401,7 +401,20 @@ table {
 
     padding-bottom: 8px;
 }
+.group-cell {
 
+    font-weight: bold;
+
+    text-align: center;
+
+    vertical-align: middle;
+
+    background: #f5f5f5;
+
+    min-width: 120px;
+
+    word-break: break-word;
+}
 
 /* ===================================== */
 /* SIGN */
@@ -512,6 +525,20 @@ body {
 .header-section {
     display: flex;
     border-bottom: 1px solid #000;
+}
+.group-cell {
+
+    font-weight: bold;
+
+    text-align: center;
+
+    vertical-align: middle;
+
+    background: #f5f5f5;
+
+    min-width: 120px;
+
+    word-break: break-word;
 }
 
 .logo-box {
